@@ -10,9 +10,9 @@ Created on 04.09.2018
 import io
 import time
 
-import pygame
-
 import loader
+
+import pygame
 
 
 class Sound:
