@@ -13,4 +13,3 @@ F5 - new game;
 Tab - change zone;
 Shift+Tab - change zone reverse;
 Space - take card or put if card took;
-Shift+Space - drop card in house;
