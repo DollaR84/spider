@@ -62,7 +62,7 @@ class Board:
 
         if 'hard' == self.level:
             suits = Cards.suits * 2
-        elif ''middle' == self.level:
+        elif 'middle' == self.level:
             suits = [Cards.black_suits[1]] * 4 + [Cards.red_suits[1]] * 4
         else:
             suits = [Cards.black_suits[1]] * 8

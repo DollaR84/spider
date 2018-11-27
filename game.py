@@ -11,8 +11,6 @@ import pickle
 import random
 import time
 
-import pygame
-
 from configparser import ConfigParser
 
 from audio import Music
@@ -24,6 +22,8 @@ from constants import Colors
 
 from player import Actions
 from player import Player
+
+import pygame
 
 from speech import Speech
 
@@ -137,7 +137,7 @@ class Game:
             else:
                 textSurfaceObj = self.fontObj.render(self.phrases['game_over'], True, Colors.RED)
             textRectObj = textSurfaceObj.get_rect()
-            textRectObj.center = (self.size_x//2, self.size_y//2)
+            textRectObj.center = (self.size_x // 2, self.size_y // 2)
             self.screen.blit(textSurfaceObj, textRectObj)
         else:
             self.player.draw()

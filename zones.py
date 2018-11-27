@@ -7,8 +7,6 @@ Created on 27.11.2018
 
 """
 
-import checker
-
 from constants import Colors
 
 import pygame
