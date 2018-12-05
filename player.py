@@ -151,7 +151,7 @@ class Player:
                             self.__open_card(self.__take_cards_list[-1])
                     self.__took = False
                     self.take_card.take = False
-                    self.__drops()
+                    self.__drops(zone)
                 else:
                     cards = zone.rows[zone.current_row] if zone.if_rows else zone.cards
                     card = zone.get_card(zone.current_card)
@@ -184,6 +184,26 @@ class Player:
         if open_flag:
             self.__speak_card(card)
 
-    def __drops(self):
+    def __drops(self, zone):
         """Dropped cards from zone in house."""
-        
+        if 'columns' != zone.NAME:
+            return
+        index = -1
+        card = zone.get_card(index)
+        if 'ace' == card.rate:
+            while card is not None:
+                if 'king' != card.rate:
+                    index -= 1
+                    card = zone.get_card(index)
+                else:
+                    break
+            cards = zone.rows[zone.current_row][index:]
+            if checker.equal_suits(cards) and checker.rate_down(cards):
+                house = self.board.zones[1]
+                for row in house.rows:
+                    if not row:
+                        for _ in range(len(cards)):
+                            row.append(zone.rows[zone.current_row].pop())
+                            self.board.sounds.play('distrib')
+                        break
+                self.__open_card(zone.get_card(-1))
