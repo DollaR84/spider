@@ -13,4 +13,6 @@ F5 - new game;
 F9 - change language;
 Tab - change zone;
 Shift+Tab - change zone reverse;
+Arrows left/right - move by rows in zone;
+Arrows up/down - move by open cards in row;
 Space - take card or put if card took;
