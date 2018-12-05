@@ -182,7 +182,12 @@ class ZoneColumns(ZoneBase):
 
     def get_card(self, index):
         """Return card in current row for index."""
-        return self.rows[self.current_row][index]
+        try:
+            result = self.rows[self.current_row][index]
+        except:
+            result = None
+        finally:
+            return result
 
     def take(self, cards, old_list):
         """Check take card for put row."""
