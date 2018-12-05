@@ -73,7 +73,12 @@ class ZoneDeck(ZoneBase):
 
     def get_card(self, index):
         """Return card in current row for index."""
-        return self.cards[index]
+        try:
+            result = self.cards[index]
+        except:
+            result = None
+        finally:
+            return result
 
 
 class ZoneHouse(ZoneBase):
@@ -123,7 +128,12 @@ class ZoneHouse(ZoneBase):
 
     def get_card(self, index):
         """Return card in current row for index."""
-        return self.rows[self.current_row][index]
+        try:
+            result = self.rows[self.current_row][index]
+        except:
+            result = None
+        finally:
+            return result
 
 
 class ZoneColumns(ZoneBase):
