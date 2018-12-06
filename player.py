@@ -171,6 +171,9 @@ class Player:
                 self.__speak_card()
                 return True
             for row in self.board.zones[2].rows:
+                if not row:
+                    return True
+            for row in self.board.zones[2].rows:
                 row.append(self.board.zones[0].cards.pop())
                 self.__open_card(row[-1])
             self.__speak_card()
@@ -179,6 +182,8 @@ class Player:
 
     def __open_card(self, card, open_flag=True):
         """Open card or close if open_flag = False."""
+        if card is None:
+            return
         card.status = open_flag
         self.board.sounds.play('open')
         if open_flag:
