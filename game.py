@@ -177,7 +177,10 @@ class Game:
             data = pickle.load(help_file)
             for line in [line for line in data[language] if '\n' != line]:
                 self.speech.speak(line)
-                time.sleep(0.1)
+
+                shift = len(line) // 5
+                timeout = shift * 0.3
+                time.sleep(timeout)
 
     def turn_music(self):
         """On or off music in game."""
