@@ -198,12 +198,17 @@ class Player:
         card = zone.get_card(index)
         if 'ace' == card.rate:
             while card is not None:
-                if 'king' != card.rate:
+                if not card.status:
+                    index += 1
+                    break
+                elif 'king' != card.rate:
                     index -= 1
                     card = zone.get_card(index)
                 else:
                     break
             cards = zone.rows[zone.current_row][index:]
+            if 'king' != cards[0].rate:
+                return
             if checker.equal_suits(cards) and checker.rate_down(cards):
                 house = self.board.zones[1]
                 for row in house.rows:
