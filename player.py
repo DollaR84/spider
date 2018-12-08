@@ -174,8 +174,9 @@ class Player:
                 if not row:
                     return True
             for row in self.board.zones[2].rows:
-                row.append(self.board.zones[0].cards.pop())
-                self.__open_card(row[-1])
+                if self.board.zones[0].cards:
+                    row.append(self.board.zones[0].cards.pop())
+                    self.__open_card(row[-1])
             self.__speak_card()
             return True
         return False
